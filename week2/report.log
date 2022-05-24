@@ -1,0 +1,121 @@
+1_deployToken.ts
+Using address 0x0160ceDB6cae2EAd33F5c2fa25FE078485a07b63
+Wallet balance 9.926098969934097
+Deploying Token contract
+
+Awaiting confirmations
+Completed
+Contract deployed at 0x18d799bb116A2B8fB3A3eEbcb865dd9e378a90b3
+Done in 48.50s.
+
+2_deployCustomBallot.ts
+Using address 0x0160ceDB6cae2EAd33F5c2fa25FE078485a07b63
+Wallet balance 9.919771506151227
+Deploying Ballot contract
+Proposals: 
+Proposal N. 1: Gandalf
+Proposal N. 2: Frodo
+Proposal N. 3: Sam
+Awaiting confirmations
+Completed
+Contract deployed at 0x385322A513Df73994477A6D951641C0daeAF3A73
+Done in 63.83s.
+
+3_mintTokens.ts
+Using address 0x0160ceDB6cae2EAd33F5c2fa25FE078485a07b63
+Wallet balance 9.918610779143489
+address:  0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835 string
+amount:  BigNumber { _hex: '0x8ac7230489e80000', _isBigNumber: true } object
+Transaction completed. Hash: 0x886525a6d78ceb7bf672ea5c08e9ed7f02f504c3cdcc56b6b9aeb491bd847e89
+Done in 82.48s.
+
+6_queryVotingPower.ts BEFORE deligating
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.998921668147206
+Voting Power of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835 is:  0.0
+Done in 15.14s.
+
+4_delegate.ts
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.998921668147206
+Transaction completed. Hash: 0xf08800580ed2b55e2ec3df27c8fc2970e95c47dbc07ab2deb9bb670340795505
+Voting power delegated to 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Done in 13.96s.
+
+6_queryVotingPower.ts AFTER deligating
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.998776941978496
+Voting Power of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835 is:  0.0
+Done in 4.58s.
+
+2_deployCustomBallot.ts Redeploy ballot contract after voting power has been given
+
+Using address 0x0160ceDB6cae2EAd33F5c2fa25FE078485a07b63
+Wallet balance 9.917933183557233
+Deploying Ballot contract
+Proposals: 
+Proposal N. 1: Gandalf
+Proposal N. 2: Frodo
+Proposal N. 3: Sam
+Awaiting confirmations
+Completed
+Contract deployed at 0xD819303B23745d55dED8Ff5b68F69c157a738302
+Done in 89.31s.
+
+6_queryVotingPower.ts NOW, we have voting power for address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.998776941978496
+Voting Power of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835 is:  10.0
+Done in 7.42s.
+
+7_queryTokenVotes.ts Query total tokens and votes
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.99843912690586
+Available tokens of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835: 10.0
+Available votes of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835: 10.0
+Done in 5.01s.
+
+5_vote.ts Successfully completed 3 votes
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.998776941978496
+Proposal voted:  0
+Amount of votes given:  2
+Transaction completed. Hash: 0x8a11a8e325c2e366256547d32fcd12d1b569b7ee34870329812f643cd6861c9f
+Done in 15.50s.
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.998647248949704
+Proposal voted:  1
+Amount of votes given:  3
+Transaction completed. Hash: 0xee91bb2cb82a603c777a40a3bf541da6525161b817ee80225e68f9d2e430e702
+Done in 32.06s.
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.998543187925632
+Proposal voted:  2
+Amount of votes given:  4
+Transaction completed. Hash: 0x2240c264a647cf7426a937a8211d50aa041733d010ea909df724518534b1a89d
+Done in 55.05s.
+
+6_queryVotingPower.ts Query voting power after 3 votings. Available power = 10 - 2 - 3- 4 = 1
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.99843912690586
+Voting Power of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835 is:  1.0
+Done in 4.12s.
+
+7_queryTokenVotes.ts
+
+Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
+Wallet balance 9.99843912690586
+Available tokens of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835: 10.0
+Total votes of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835: 10.0
+Past votes at snapshot block number 12295628 is: 10.0
+Spent voting power: 9.0
+Done in 5.86s.
