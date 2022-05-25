@@ -116,6 +116,11 @@ Using address 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835
 Wallet balance 9.99843912690586
 Available tokens of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835: 10.0
 Total votes of 0xf83D5aCb2DCBDbBE081407bA7113d7adb7aC6835: 10.0
-Past votes at snapshot block number 12295628 is: 10.0
+Past votes at snapshot block number 12296376 is: 10.0
 Spent voting power: 9.0
-Done in 5.86s.
+Query all proposals.
+Proposal Name: Gandalf with Vote Count: 2.0
+Proposal Name: Frodo with Vote Count: 3.0
+Proposal Name: Sam with Vote Count: 4.0
+The winner is: Sam
+Done in 15.18s.

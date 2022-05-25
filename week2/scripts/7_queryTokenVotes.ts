@@ -8,6 +8,7 @@ import * as customBallotJson from "../artifacts/contracts/CustomBallot.sol/Custo
 // Do never expose your keys like this
 const EXPOSED_KEY =
   "8da4ef21b864d2cc526dbdb2a120bd2874c36c9d0a1fb7f8c63d7f7a8b41de8f";
+const PROPOSALS_NUM = 3;
 
 function setupProvider() {
     const infuraOptions = process.env.INFURA_API_KEY
@@ -71,6 +72,16 @@ async function main() {
     ) as CustomBallot;
     const spentVotingPower = await customBalletContract.spentVotePower(wallet.address);
     console.log(`Spent voting power: ${ethers.utils.formatEther(spentVotingPower)}`)
+
+    console.log("Query all proposals.")
+    for (let index=0; index < PROPOSALS_NUM; index++) {
+      const proposal = await customBalletContract.proposals(index);
+      const proposalName = ethers.utils.parseBytes32String(proposal.name);
+      const proposalVoteCount = ethers.utils.formatEther(proposal.voteCount.toString());
+      console.log(`Proposal Name: ${proposalName} with Vote Count: ${proposalVoteCount}`); 
+    }
+    const winnerName = await customBalletContract.winnerName();
+    console.log(`The winner is: ${ethers.utils.parseBytes32String(winnerName)}`);
 }
 
 main().catch((error) => {
