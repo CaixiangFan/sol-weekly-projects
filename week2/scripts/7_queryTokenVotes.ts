@@ -1,31 +1,11 @@
 import { Contract, ethers } from "ethers";
+import { EXPOSED_KEY, setupProvider} from "./utils"
 import "dotenv/config";
 import { MyToken, CustomBallot } from "../typechain";
 import * as myTokenJson from "../artifacts/contracts/Token.sol/MyToken.json";
 import * as customBallotJson from "../artifacts/contracts/CustomBallot.sol/CustomBallot.json";
 
-// This key is already public on Herong's Tutorial Examples - v1.03, by Dr. Herong Yang
-// Do never expose your keys like this
-const EXPOSED_KEY =
-  "8da4ef21b864d2cc526dbdb2a120bd2874c36c9d0a1fb7f8c63d7f7a8b41de8f";
 const PROPOSALS_NUM = 3;
-
-function setupProvider() {
-    const infuraOptions = process.env.INFURA_API_KEY
-        ? process.env.INFURA_API_SECRET
-        ? {
-            projectId: process.env.INFURA_API_KEY,
-            projectSecret: process.env.INFURA_API_SECRET,
-            }
-        : process.env.INFURA_API_KEY
-        : "";
-    const options = {
-        alchemy: process.env.ALCHEMY_API_KEY,
-        infura: infuraOptions,
-    };
-    const provider = ethers.providers.getDefaultProvider("ropsten", options);
-    return provider;
-}
 
 async function main() {
     const wallet =

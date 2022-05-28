@@ -1,28 +1,7 @@
 import { ethers } from "ethers";
+import { EXPOSED_KEY, setupProvider } from "./utils"
 import "dotenv/config";
 import * as tokenJson from "../artifacts/contracts/Token.sol/MyToken.json";
-
-// This key is already public on Herong's Tutorial Examples - v1.03, by Dr. Herong Yang
-// Do never expose your keys like this
-const EXPOSED_KEY =
-  "8da4ef21b864d2cc526dbdb2a120bd2874c36c9d0a1fb7f8c63d7f7a8b41de8f";
-
-function setupProvider() {
-  const infuraOptions = process.env.INFURA_API_KEY
-    ? process.env.INFURA_API_SECRET
-      ? {
-          projectId: process.env.INFURA_API_KEY,
-          projectSecret: process.env.INFURA_API_SECRET,
-        }
-      : process.env.INFURA_API_KEY
-    : "";
-  const options = {
-    alchemy: process.env.ALCHEMY_API_KEY,
-    infura: infuraOptions,
-  };
-  const provider = ethers.providers.getDefaultProvider("ropsten", options);
-  return provider;
-}
 
 async function main() {
   const wallet =
@@ -50,6 +29,7 @@ async function main() {
   console.log("Completed");
   console.log(`Contract deployed at ${tokenContract.address}`);
   const mintTx = await tokenContract.mint(wallet.address, 100);
+  console.log("Initially minted 100 tokens for self.")
   await mintTx.wait();
 }
 
@@ -57,6 +37,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-
-// Deployed contract in the recording: 0x18d799bb116A2B8fB3A3eEbcb865dd9e378a90b3
-// Token Tracker: https://ropsten.etherscan.io/token/0x18d799bb116A2B8fB3A3eEbcb865dd9e378a90b3

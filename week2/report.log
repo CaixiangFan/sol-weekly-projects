@@ -124,3 +124,14 @@ Proposal Name: Frodo with Vote Count: 3.0
 Proposal Name: Sam with Vote Count: 4.0
 The winner is: Sam
 Done in 15.18s.
+
+
+=========================Deploy on Goerli===========================
+$ /home/ubuntu/weekly-projects/week2/node_modules/.bin/ts-node --files ./scripts/1_deployToken.ts
+Using address 0x627306090abaB3A6e1400e9345bC60c78a8BEf57
+Wallet balance 0.04996006399985001
+Deploying Token contract
+Awaiting confirmations
+Completed
+Contract deployed at 0xd8dc0b90fe11Cc4eCBd1Ed13bC286B5245e0A0FE
+Done in 44.00s.
