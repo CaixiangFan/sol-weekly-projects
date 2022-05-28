@@ -5,6 +5,7 @@ interface IERC20Votes {
     function getPastVotes(address, uint256) external view returns (uint256);
 }
 
+
 contract CustomBallot {
     event Voted(
         address indexed voter,
@@ -24,10 +25,7 @@ contract CustomBallot {
     IERC20Votes public voteToken;
     uint256 public referenceBlock;
 
-    constructor(
-        bytes32[] memory proposalNames,
-        address _voteToken
-    ) {
+    constructor(bytes32[] memory proposalNames, address _voteToken) {
         for (uint256 i = 0; i < proposalNames.length; i++) {
             proposals.push(Proposal({name: proposalNames[i], voteCount: 0}));
         }
@@ -43,6 +41,10 @@ contract CustomBallot {
         emit Voted(msg.sender, proposal, amount, proposals[proposal].voteCount);
     }
 
+    function winnerName() external view returns (bytes32 winnerName_) {
+        winnerName_ = proposals[winningProposal()].name;
+    }
+
     function winningProposal() public view returns (uint256 winningProposal_) {
         uint256 winningVoteCount = 0;
         for (uint256 p = 0; p < proposals.length; p++) {
@@ -51,10 +53,6 @@ contract CustomBallot {
                 winningProposal_ = p;
             }
         }
-    }
-
-    function winnerName() external view returns (bytes32 winnerName_) {
-        winnerName_ = proposals[winningProposal()].name;
     }
 
     function votingPower() public view returns (uint256 votingPower_) {
