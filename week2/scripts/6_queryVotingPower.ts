@@ -1,5 +1,5 @@
 import { Contract, ethers } from "ethers";
-import { EXPOSED_KEY, setupProvider} from "./utils"
+import { EXPOSED_KEY, setupProvider } from "./utils"
 import "dotenv/config";
 import { CustomBallot } from "../typechain";
 import * as customBallotJson from "../artifacts/contracts/CustomBallot.sol/CustomBallot.json";

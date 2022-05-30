@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { EXPOSED_KEY, setupProvider, convertStringArrayToBytes32} from "./utils"
+import { EXPOSED_KEY, setupProvider, convertStringArrayToBytes32 } from "./utils"
 import "dotenv/config";
 import * as ballotJson from "../artifacts/contracts/CustomBallot.sol/CustomBallot.json";
 
