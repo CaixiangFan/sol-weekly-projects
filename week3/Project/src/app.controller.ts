@@ -27,7 +27,7 @@ import { UploadIpfsDto } from './dtos/upload-ipfs.dto';
 @ApiTags('file')
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @Get('')
   @ApiOperation({
@@ -147,6 +147,33 @@ export class AppController {
         'Content-Disposition': `attachment; filename="${fileData.fileName}"`,
       });
       return fileStream;
+    } catch (error) {
+      console.error(error);
+      throw new HttpException(error.message, 503);
+    }
+  }
+
+  @Get('get-metadata/:id')
+  @ApiOperation({
+    summary: 'Get metadata of element by id from server storage',
+    description: 'Gets the metadata of element at the requested index',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Metadata of the element',
+  })
+  @ApiResponse({
+    status: 503,
+    description: 'The server is not configured correctly',
+    type: HttpException,
+  })
+  async getMetadata(
+    @Response({ passthrough: true }) res,
+    @Param('id') id: number,
+  ) {
+    try {
+      const metaData = this.appService.get(id).metadata;
+      return metaData;
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, 503);
