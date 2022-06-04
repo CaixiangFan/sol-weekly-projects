@@ -1,6 +1,6 @@
 ## Project Server emulation folders
-/upload
-/db
+# /upload
+# /db
 
 # compiled output
 /dist
