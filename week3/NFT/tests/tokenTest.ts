@@ -545,5 +545,3 @@ describe("Interaction with Token contract", function () {
     });
   });
 });
-
-
