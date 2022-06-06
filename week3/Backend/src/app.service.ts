@@ -9,6 +9,7 @@ import { create } from 'ipfs-http-client';
 import { createReadStream } from 'fs';
 import { IPFSHTTPClient } from 'ipfs-http-client/types/src/types';
 import { concat as uint8ArrayConcat } from 'uint8arrays/concat';
+import fetch from 'node-fetch';
 
 const DB_PATH = '../db/db.json';
 
@@ -93,5 +94,67 @@ export class AppService {
     }
     const fileStream = uint8ArrayConcat(content);
     return new StreamableFile(fileStream);
+  }
+
+  async getAllNFTs(contractAddress: string) {
+    const url = `https://ropsten.etherscan.io/token/${contractAddress}`;
+    try {
+      // 👇️ const response: Response
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      console.log('result is: ', JSON.stringify(result, null, 4));
+
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
+  }
+
+  async getNFTByID(contractAddress: string, id: Number) {
+    const url = `https://ropsten.etherscan.io/token/${contractAddress}?a=${id}#inventory`;
+    try {
+      // 👇️ const response: Response
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      console.log('result is: ', JSON.stringify(result, null, 4));
+
+      return result;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
+    }
   }
 }

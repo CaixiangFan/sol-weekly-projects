@@ -255,4 +255,50 @@ export class AppController {
     const updatedObj = this.appService.saveToIpfs(body.id);
     return updatedObj;
   }
+
+  @Get('nfts/:contractAddress')
+  @ApiOperation({
+    summary: 'NFT token contents',
+    description: 'Gets all minted NFT tokens info',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'NFT token contents',
+  })
+  @ApiResponse({
+    status: 503,
+    description: 'The server is not configured correctly',
+    type: HttpException,
+  })
+  async getAllNFTs(@Param('contractAddress') contractAddress: string) {
+    try {
+      const result = this.appService.getAllNFTs(contractAddress);
+      return result;
+    } catch (error) {
+      throw new HttpException(error.message, 503);
+    }
+  }
+
+  @Get('nfts/:contractAddress/:id')
+  @ApiOperation({
+    summary: 'Get NFT token by id from testnet',
+    description: 'Gets the NFT token info at the requested index',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Requested NFT info',
+  })
+  @ApiResponse({
+    status: 503,
+    description: 'The server is not configured correctly',
+    type: HttpException,
+  })
+  async getNFTByID(@Param('contractAddress') contractAddress: string, @Param('id') id: number) {
+    try {
+      const result = this.appService.getNFTByID(contractAddress, id);
+      return result;
+    } catch (error) {
+      throw new HttpException(error.message, 503);
+    }
+  }
 }
