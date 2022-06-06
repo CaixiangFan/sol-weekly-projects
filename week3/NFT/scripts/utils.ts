@@ -1,19 +1,19 @@
 import { ethers } from "ethers";
 
 function setupProvider() {
-    const infuraOptions = process.env.INFURA_API_KEY
-        ? process.env.INFURA_API_SECRET
+    const infuraOptions = process.env.PROVIDER_OPTIONS_INFURA_PROJECT_ID
+        ? process.env.PROVIDER_OPTIONS_INFURA_PROJECT_SECRET
             ? {
-                projectId: process.env.INFURA_API_KEY,
-                projectSecret: process.env.INFURA_API_SECRET,
+                projectId: process.env.PROVIDER_OPTIONS_INFURA_PROJECT_ID,
+                projectSecret: process.env.PROVIDER_OPTIONS_INFURA_PROJECT_SECRET,
             }
-            : process.env.INFURA_API_KEY
+            : process.env.PROVIDER_OPTIONS_INFURA_PROJECT_ID
         : "";
     const options = {
-        alchemy: process.env.ALCHEMY_API_KEY,
+        alchemy: process.env.ALCHEMY_RINKEBY_API_KEY,
         infura: infuraOptions,
     };
-    const provider = ethers.providers.getDefaultProvider("ropsten", options);
+    const provider = ethers.providers.getDefaultProvider("goerli", options);
     return provider;
 }
 
